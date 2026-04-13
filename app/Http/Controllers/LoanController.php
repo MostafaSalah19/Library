@@ -44,6 +44,10 @@ class LoanController extends Controller
 
     public function returnBook($loanId)
     {
+
+        if (BookCopy::where('id', Loan::where('id', $loanId)->value('book_copy_id'))->value('status') == 'available') {
+            return redirect()->route('loans.index')->with('error', 'هذه النسخة متاحة بالفعل');
+        }
         $loan = Loan::findOrFail($loanId);
         $loan->returned_at = now()->toDateString();
         if ($loan->returned_at > $loan->due_at) {
