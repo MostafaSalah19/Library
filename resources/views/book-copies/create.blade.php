@@ -6,7 +6,7 @@
 @section('content')
 
 
-    <div class="card-header">
+    <div class="card-header w-100">
 
         {{-- @if ($errors->any())
     <div class="alert alert-danger">
@@ -21,8 +21,8 @@
         <form action="{{ route('book-copies.store') }}" method="POST">
             @csrf
 
-            <div class="card-body">
-                <div class="form-group">
+            <div class="card-body row">
+                <div class="form-group col-3">
                     <label for="exampleInputname1">Book Copy</label>
                     <select class="form-control" id="exampleInputname1" name="book_id">
                         <option value="">Select Book</option>
@@ -32,7 +32,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-3">
                     <label for="exampleInputbio1">Barcode</label>
                     <input type="text" class="form-control" id="exampleInputbio1" placeholder="Enter barcode"
                         name="barcode" value="{{ old('barcode') }}">
@@ -40,7 +40,7 @@
                         <span style="color: red;">{{ $message }}</span> <br>
                     @enderror
                 </div>
-                <div class="form-group">
+                <div class="form-group col-3">
                     <label for="exampleInputbio1">Status</label>
                     <select class="form-control" id="exampleInputbio1" name="status">
                         <option value="">Select Status</option>

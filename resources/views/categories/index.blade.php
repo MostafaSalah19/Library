@@ -10,7 +10,7 @@
 
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header w-100">
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
                         <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            <!-- /.card-header -->
+            <!-- /.card-header w-100 -->
             <div class="card-body table-responsive p-0" style="height: 300px;">
 
                 @if (@isset($data) and !@empty($data))
@@ -40,7 +40,8 @@
                                     <td>{{ $info->id }}</td>
                                     <td>{{ $info->name }}</td>
                                     <td style="display: flex">
-                                        <a href="{{ route('categories.delete', $info->id) }}" class="btn btn-danger">Delete</a>
+                                        <a href="{{ route('categories.delete', $info->id) }}"
+                                            class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             </tbody>

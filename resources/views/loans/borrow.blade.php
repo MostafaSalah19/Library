@@ -6,7 +6,7 @@
 @section('content')
 
 
-    <div class="card-header w-100">
+    <div class="card-header w-100 w-100">
 
         {{-- @if ($errors->any())
     <div class="alert alert-danger">

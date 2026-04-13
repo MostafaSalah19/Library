@@ -10,7 +10,7 @@
 
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header w-100">
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
                         <input type="text" name="table_search" class="form-control float-right" placeholder="Search">

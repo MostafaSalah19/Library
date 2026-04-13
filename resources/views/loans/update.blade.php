@@ -6,7 +6,7 @@
 @section('content')
 
 
-    <div class="card-header w-100">
+    <div class="card-header w-100 w-100">
 
         {{-- @if ($errors->any())
     <div class="alert alert-danger">
@@ -27,7 +27,8 @@
                     <select class="form-control" id="exampleInputname1" name="member_id">
                         <option value="">Select Member</option>
                         @foreach ($members as $member)
-                            <option value="{{ $member->id }}" {{$loan->member_id == $member->id ? 'selected' : ''}}>{{ $member->name }}</option>
+                            <option value="{{ $member->id }}" {{ $loan->member_id == $member->id ? 'selected' : '' }}>
+                                {{ $member->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -36,7 +37,8 @@
                     <select class="form-control" id="exampleInputbio1" name="book_copy_id">
                         <option value="">Select Book Copy</option>
                         @foreach ($book_copies as $copy)
-                            <option value="{{ $copy->id }}" {{$loan->book_copy_id == $copy->id ? 'selected' : ''}}>{{ $copy->book->title }}</option>
+                            <option value="{{ $copy->id }}" {{ $loan->book_copy_id == $copy->id ? 'selected' : '' }}>
+                                {{ $copy->book->title }}</option>
                         @endforeach
                     </select>
                 </div>
