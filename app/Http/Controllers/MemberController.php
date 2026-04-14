@@ -37,6 +37,7 @@ class MemberController extends Controller
         $member->phone = $request->phone;
         $member->email = $request->email;
         $member->joined_at = now();
+        $member->position = $request->position;
         $member->save();
         return redirect()->route('members.index');
     }
@@ -48,7 +49,7 @@ class MemberController extends Controller
     public function edit( $id)
     {
         $member = Member::find($id);
-        return view('members.edit', compact('member'));
+        return view('members.update', compact('member'));
     }
 
     /**
@@ -60,6 +61,7 @@ class MemberController extends Controller
         $member->name = $request->name;
         $member->phone = $request->phone;
         $member->email = $request->email;
+        $member->position = $request->position;
         $member->save();
         return redirect()->route('members.index');
     }

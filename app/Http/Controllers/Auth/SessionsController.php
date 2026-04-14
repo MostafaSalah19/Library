@@ -30,6 +30,7 @@ class SessionsController extends Controller
         };
     }
 
+    
     public function destroy()
     {
         Auth::logout();

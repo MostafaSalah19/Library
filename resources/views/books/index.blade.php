@@ -27,7 +27,7 @@
 
                 @if (@isset($data) and !@empty($data))
                     <table class="table table-head">
-                        <thead >
+                        <thead>
                             <tr style="flex">
                                 <th>Author</th>
                                 <th>Category</th>

@@ -5,6 +5,7 @@
 
 @section('content')
 
+    <a href="{{ route('members.create') }}" class="btn btn-block btn-primary btn-lg">Create Member</a>
 
 
     <div class="col-12">
@@ -29,6 +30,8 @@
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Joined At</th>
+                                <th>Position</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         @foreach ($data as $info)
@@ -38,6 +41,11 @@
                                     <td>{{ $info->email }}</td>
                                     <td>{{ $info->phone }}</td>
                                     <td>{{ $info->joined_at }}</td>
+                                    <td>{{ $info->position }}</td>
+                                    <td><a href="{{ route('members.edit', $info->id) }}" class="btn btn-info">Update</a>
+                                        <a href="{{ route('members.delete', $info->id) }}" class="btn btn-danger"
+                                            onclick="return confirm('Are you sure you want to delete this member?')">Delete</a>
+                                    </td>
 
                                 </tr>
                             </tbody>
