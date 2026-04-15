@@ -37,7 +37,7 @@ class CreateBorrowRequest extends FormRequest
             'book_copy_id.exists' => 'The selected book is invalid.',
             'days.integer' => 'The days field must be an integer.',
             'days.min' => 'The days field must be at least 1.',
-            'days.max' => 'The days field may not be greater than 60.',
+            'days.max' => 'The days field may not be greater than 14.',
         ];
     }   
 }

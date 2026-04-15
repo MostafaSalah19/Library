@@ -5,8 +5,10 @@
 
 @section('content')
 
-    <a href="{{ route('books.create') }}" class="btn btn-block btn-primary btn-lg">Create Book</a>
+ @if (auth()->user()->role == 1)
 
+    <a href="{{ route('books.create') }}" class="btn btn-block btn-primary btn-lg">Create Book</a>
+@endif
 
     <div class="col-12">
         <div class="card">
@@ -35,7 +37,9 @@
                                 <th>ISBN</th>
                                 <th>Published Year</th>
                                 <th>Pages</th>
+                                 @if (auth()->user()->role == 1)
                                 <th>Actions</th>
+                                @endif
                             </tr>
                         </thead>
                         @foreach ($data as $info)
@@ -47,10 +51,12 @@
                                     <td>{{ $info->isbn }}</td>
                                     <td>{{ $info->published_year }}</td>
                                     <td>{{ $info->pages }}</td>
-                                    <td style="display: flex">
+                                     @if (auth()->user()->role == 1)
+                                    <td style="display: flex ; gap: 5px;">
                                         <a href="{{ route('books.edit', $info->id) }}" class="btn btn-info">Update</a>
                                         <a href="{{ route('books.delete', $info->id) }}" class="btn btn-danger">Delete</a>
                                     </td>
+                                    @endif
                                 </tr>
                             </tbody>
                         @endforeach

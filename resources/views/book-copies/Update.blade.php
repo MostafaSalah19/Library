@@ -27,7 +27,7 @@
                     <select class="form-control" id="exampleInputname1" name="book_id">
                         <option value="">Select Book</option>
                         @foreach ($books as $book)
-                            <option value="{{ $book->id }}" {{ old('book_id') == $book->id ? 'selected' : '' }}>
+                            <option value="{{ $book->id }}" {{ $book_copy->book_id == $book->id ? 'selected' : '' }}>
                                 {{ $book->title }}</option>
                         @endforeach
                     </select>
@@ -35,7 +35,7 @@
                 <div class="form-group col-3">
                     <label for="exampleInputbio1">Barcode</label>
                     <input type="text" class="form-control" id="exampleInputbio1" placeholder="Enter barcode"
-                        name="barcode" value="{{ old('barcode') }}">
+                        name="barcode" value="{{ $book_copy->barcode }}">
                     @error('barcode')
                         <span style="color: red;">{{ $message }}</span> <br>
                     @enderror
@@ -43,11 +43,11 @@
                 <div class="form-group col-3">
                     <label for="exampleInputbio1">Status</label>
                     <select class="form-control" id="exampleInputbio1" name="status">
-                        <option value="">Select Status</option>
-                        <option value="available" {{ old('status') == 'available' ? 'selected' : '' }}>Available</option>
-                        <option value="loaned" {{ old('status') == 'loaned' ? 'selected' : '' }}>Loaned</option>
-                        <option value="repair" {{ old('status') == 'repair' ? 'selected' : '' }}>Repair</option>
-                        <option value="lost" {{ old('status') == 'lost' ? 'selected' : '' }}>Lost</option>
+                        <option value="{{ $book_copy->status }}">Select Status</option>
+                        <option value="{{ $book_copy->status }}" {{ $book_copy->status == 'available' ? 'selected' : '' }}>Available</option>
+                        <option value="{{ $book_copy->status }}" {{ $book_copy->status == 'loaned' ? 'selected' : '' }}>Loaned</option>
+                        <option value="{{ $book_copy->status }}" {{ $book_copy->status == 'repair' ? 'selected' : '' }}>Repair</option>
+                        <option value="{{ $book_copy->status }}" {{ $book_copy->status == 'lost' ? 'selected' : '' }}>Lost</option>
                     </select>
                     @error('status')
                         <span style="color: red;">{{ $message }}</span> <br>

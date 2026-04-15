@@ -30,6 +30,9 @@
                             <option value="{{ $member->id }}">{{ $member->name }}</option>
                         @endforeach
                     </select>
+                    @error('member_id')
+                        <span style="color: red;">{{ $message }}</span> <br>
+                    @enderror
                 </div>
                 <div class="form-group col-3">
                     <label for="exampleInputbio1">Book Copy</label>
@@ -39,6 +42,9 @@
                             <option value="{{ $copy->id }}">{{ $copy->book->title }}</option>
                         @endforeach
                     </select>
+                    @error('book_copy_id')
+                        <span style="color: red;">{{ $message }}</span> <br>
+                    @enderror
                 </div>
                 <div class="form-group col-3">
                     <label for="exampleInputbio1">Due At</label>

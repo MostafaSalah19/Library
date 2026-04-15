@@ -5,7 +5,9 @@
 
 @section('content')
 
-    <a href="{{ route('authors.create') }}" class="btn btn-block btn-primary btn-lg">Create Author</a>
+    @if (auth()->user()->role == 1)
+        <a href="{{ route('authors.create') }}" class="btn btn-block btn-primary btn-lg">Create Author</a>
+    @endif
 
 
     <div class="col-12">
@@ -31,7 +33,9 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Biography</th>
-                                <th>Actions</th>
+                                @if (auth()->user()->role == 1)
+                                    <th>Actions</th>
+                                @endif
                             </tr>
                         </thead>
                         @foreach ($data as $info)
@@ -39,10 +43,14 @@
                                 <tr>
                                     <td>{{ $info->name }}</td>
                                     <td>{{ $info->bio }}</td>
-                                    <td style="display: flex">
-                                        <a href="{{ route('authors.edit', $info->id) }}" class="btn btn-info">Update</a>
-                                        <a href="{{ route('authors.delete', $info->id) }}" class="btn btn-danger">Delete</a>
-                                    </td>
+
+                                    @if (auth()->user()->role == 1)
+                                        <td style="display: flex; gap: 5px;">
+                                            <a href="{{ route('authors.edit', $info->id) }}" class="btn btn-info">Update</a>
+                                            <a href="{{ route('authors.delete', $info->id) }}"
+                                                class="btn btn-danger">Delete</a>
+                                        </td>
+                                    @endif
                                 </tr>
                             </tbody>
                         @endforeach

@@ -26,4 +26,15 @@ class CreateMemberRequest extends FormRequest
             'email' => 'required|email|',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'The name field is required.',
+            'name.string' => 'The name field must be a string.',
+            'name.max' => 'The name field may not be greater than 255 characters.',
+            'email.required' => 'The email field is required.',
+            'email.email' => 'The email field must be a valid email address.',
+        ];
+    }
 }

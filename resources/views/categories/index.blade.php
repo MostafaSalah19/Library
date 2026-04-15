@@ -5,8 +5,9 @@
 
 @section('content')
 
+ @if (auth()->user()->role == 1)
     <a href="{{ route('categories.create') }}" class="btn btn-block btn-primary btn-lg">Create Category</a>
-
+@endif
 
     <div class="col-12">
         <div class="card">
@@ -29,9 +30,11 @@
                     <table class="table table-head-fixed">
                         <thead>
                             <tr>
-                                <th>id</th>
+                                <th>ID</th>
                                 <th>Name</th>
+                                 @if (auth()->user()->role == 1)
                                 <th>Action</th>
+                                @endif
                             </tr>
                         </thead>
                         @foreach ($data as $info)
@@ -39,10 +42,12 @@
                                 <tr>
                                     <td>{{ $info->id }}</td>
                                     <td>{{ $info->name }}</td>
+                                     @if (auth()->user()->role == 1)
                                     <td style="display: flex">
                                         <a href="{{ route('categories.delete', $info->id) }}"
                                             class="btn btn-danger">Delete</a>
                                     </td>
+                                    @endif
                                 </tr>
                             </tbody>
                         @endforeach

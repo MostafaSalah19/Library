@@ -69,22 +69,35 @@ class LoanController extends Controller
         //     // ... بقية التحققا
         // ]);
 
-        $borrowed_at = now()->toDateString(); 
-        $days = $request->input('days', 14); 
+        $borrowed_at = now()->toDateString();
+        $days = $request->input('days', 14);
         $due_at = now()->addDays($days)->toDateString();
 
-        Loan::create([
-            'member_id'    => $request->member_id,
-            'book_copy_id' => $request->book_copy_id,
-            'borrowed_at'  => $borrowed_at, 
-            'due_at'       => $due_at,
-            'days'         => $days,
-            'fine'         => 0,
-        ]);
+        $loan =new Loan();
+        $loan->member_id    = $request->member_id;
+        $loan->book_copy_id = $request->book_copy_id;
+        $loan->borrowed_at  = $borrowed_at;
+        $loan->due_at       = $due_at;
+        $loan->days         = $days;
+        $loan->fine         = 0;
+        $loan->save();
+        
         
         BookCopy::where('id', $request->book_copy_id)->update(['status' => 'loaned']);
         return redirect()->route('loans.index')->with('success', 'تمت عملية الإعارة بنجاح');
     }
+
+    public function edit($loanId)
+    {
+        $loan = Loan::findOrFail($loanId);
+        $members = Member::select("id", "name")->get();
+        $book_copies = BookCopy::select("id", "book_id")->get();
+        foreach ($book_copies as $copy) {
+            $copy->book_title = Book::where('id', '=', $copy->book_id)->value('title');
+        }
+        return view('loans.update', compact('loan', 'members', 'book_copies'));
+    }
+
 
     public function update(CreateReturnRequest $request, $loanId)
     {

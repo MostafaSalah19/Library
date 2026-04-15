@@ -5,8 +5,9 @@
 
 @section('content')
 
-    <a href="{{ route('loans.borrow') }}" class="btn btn-block btn-primary btn-lg">Borrow Book</a>
-
+    @if (auth()->user()->role == 1)
+        <a href="{{ route('loans.borrow') }}" class="btn btn-block btn-primary btn-lg">Borrow Book</a>
+    @endif
 
     <div class="col-12">
         <div class="card">
@@ -34,7 +35,9 @@
                                 <th>Due At</th>
                                 <th>Return At</th>
                                 <th>Fine</th>
-                                <th>Actions</th>
+                                @if (auth()->user()->role == 1)
+                                    <th>Actions</th>
+                                @endif
                             </tr>
                         </thead>
                         @foreach ($data as $info)
@@ -46,11 +49,14 @@
                                     <td>{{ $info->due_at }}</td>
                                     <td>{{ $info->returned_at }}</td>
                                     <td>{{ $info->fine }}</td>
-                                    <td style="display: flex">
-                                        <a href="{{ route('loans.returnBook', $info->id) }}"
-                                            class="btn btn-danger">Return</a>
-                                        <a href="{{ route('loans.update', $info->id) }}" class="btn btn-warning">Update</a>
-                                    </td>
+                                    @if (auth()->user()->role == 1)
+                                        <td style="display: flex ; gap: 5px;">
+                                            <a href="{{ route('loans.returnBook', $info->id) }}"
+                                                class="btn btn-danger">Return</a>
+                                            <a href="{{ route('loans.edit', $info->id) }}"
+                                                class="btn btn-warning">Update</a>
+                                        </td>
+                                    @endif
                                 </tr>
                             </tbody>
                         @endforeach

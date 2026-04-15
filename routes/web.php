@@ -18,7 +18,7 @@ Route::get('/home', function () {
 
 
 Route::middleware('auth')->group(function () {
-    
+
     Route::middleware('admin')->group(function () {
         Route::get('/authors/create', [AuthorController::class, 'create'])->name('authors.create');
         Route::post('/authors', [AuthorController::class, 'store'])->name('authors.store');
@@ -52,7 +52,8 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/loans/borrow', [LoanController::class, 'borrow'])->name('loans.borrow');
         Route::post('/loans', [LoanController::class, 'store'])->name('loans.store');
-        Route::get('/loans/{loanId}/update', [LoanController::class, 'update'])->name('loans.update');
+        Route::get('/loans/{loanId}/edit', [LoanController::class, 'edit'])->name('loans.edit');
+        Route::post('/loans/{loanId}', [LoanController::class, 'update'])->name('loans.update');
         Route::get('/loans/{loanId}', [LoanController::class, 'returnBook'])->name('loans.returnBook');
     });
 

@@ -53,14 +53,7 @@
                         <span style="color: red;">{{ $message }}</span> <br>
                     @enderror
                 </div>
-                <div class="form-group col-3">
-                    <label for="exampleInputbio1">Position</label>
-                    <input type="text" class="form-control" id="exampleInputbio1" placeholder="Enter position" name="position"
-                        value="{{ old('position') }}">
-                    @error('position')
-                        <span style="color: red;">{{ $message }}</span> <br>
-                    @enderror
-                </div>
+                
 
             </div>
             <!-- /.card-body -->
