@@ -5,9 +5,9 @@
 
 @section('content')
 
- @if (auth()->user()->role == 1)
-    <a href="{{ route('categories.create') }}" class="btn btn-block btn-primary btn-lg">Create Category</a>
-@endif
+    @if (auth()->user()->role == 1)
+        <a href="{{ route('categories.create') }}" class="btn btn-block btn-primary btn-lg">Create Category</a>
+    @endif
 
     <div class="col-12">
         <div class="card">
@@ -32,8 +32,8 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                 @if (auth()->user()->role == 1)
-                                <th>Action</th>
+                                @if (auth()->user()->role == 1)
+                                    <th>Action</th>
                                 @endif
                             </tr>
                         </thead>
@@ -42,11 +42,11 @@
                                 <tr>
                                     <td>{{ $info->id }}</td>
                                     <td>{{ $info->name }}</td>
-                                     @if (auth()->user()->role == 1)
-                                    <td style="display: flex">
-                                        <a href="{{ route('categories.delete', $info->id) }}"
-                                            class="btn btn-danger">Delete</a>
-                                    </td>
+                                    @if (auth()->user()->role == 1)
+                                        <td style="display: flex">
+                                            <a href="{{ route('categories.delete', $info->id) }}"
+                                                class="btn btn-danger">Delete</a>
+                                        </td>
                                     @endif
                                 </tr>
                             </tbody>
