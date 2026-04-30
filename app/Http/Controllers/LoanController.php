@@ -15,7 +15,7 @@ class LoanController extends Controller
 {
     public function index()
     {
-        $data = Loan::all();
+        $data = Loan::paginate(10);
         if (!empty($data)) {
             foreach ($data as $info) {
                 $info->member_name = Member::where('id', '=', $info->member_id)->value('name');

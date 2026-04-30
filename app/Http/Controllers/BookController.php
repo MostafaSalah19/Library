@@ -14,7 +14,7 @@ class BookController extends Controller
     {
         // $data = Book::withTrashed()   ->orderby('id','ASC')->get();
 
-        $data = Book::with(['author', 'category'])->orderby('id', 'ASC')->get();
+        $data = Book::paginate(10);
 
         if ($request->has('q')) {
             $data = $data->where('title', 'like', '%' . $request->q . '%');

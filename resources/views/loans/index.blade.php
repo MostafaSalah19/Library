@@ -67,6 +67,9 @@
 
 
                 </table>
+                <div class="col-md-12">
+                    {{ $data->links('pagination::bootstrap-4') }}
+                </div>
             </div>
             <!-- /.card-body -->
         </div>

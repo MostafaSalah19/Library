@@ -13,7 +13,7 @@ class BookCopyController extends Controller
     {
         // $data = BookCopy::withTrashed()->orderby('id','ASC')->get();
 
-        $data = BookCopy::all();
+        $data = BookCopy::paginate(10);
         if (!empty($data)) {
             foreach ($data as $info) {
                 $info->book_name = Book::where('id', '=', $info->book_id)->value('title');

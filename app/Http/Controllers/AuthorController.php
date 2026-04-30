@@ -10,8 +10,9 @@ class AuthorController extends Controller
 {
     public function index(){
         // $data = Author::withTrashed()   ->orderby('id','ASC')->get();
+        $data= Author::paginate(10);
 
-        $data= Author::all();
+        // $data= Author::all();
         return view('authors.index', compact('data'));
     }
 
