@@ -13,7 +13,7 @@ class AuthorController extends Controller
     public function index(){
         // $data = Author::withTrashed()   ->orderby('id','ASC')->get();
 
-        $data= Author::all();
+        $data= Author::paginate(10);
         return response()->json(['authors'=>$data], 200);
     }
 }
