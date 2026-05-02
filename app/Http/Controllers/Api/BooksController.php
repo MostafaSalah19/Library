@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Author;
 use App\Models\Category;
+use App\Http\Requests\CreateBookRequest;
 
 class BooksController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request)
+    {
 
         $data = Book::paginate(10);
 
@@ -35,6 +37,33 @@ class BooksController extends Controller
             }
         }
 
-        return response()->json(['books'=>$data], 200);
+        return response()->json(['books' => $data], 200);
+    }
+
+    public function store(CreateBookRequest $request)
+    {
+
+        $book = new Book();
+        $book->author_id = $request->author_id;
+        $book->category_id = $request->category_id;
+        $book->title = $request->title;
+        $book->isbn = $request->isbn;
+        $book->published_year = $request->published_year;
+        $book->pages = $request->pages;
+        $book->save();
+        return response()->json(['message' => 'Book created successfully'], 201);
+    }
+
+
+    public function show($id)
+    {
+        $data = Book::find($id);
+        if (!$data) {
+            return response()->json(['error' => 'Book not found'], 404);
+        }
+        $data->author_name = Author::where('id', '=', $data->author_id)->value('name');
+        $data->category_name = Category::where('id', '=', $data->category_id)->value('name');
+        
+        return response()->json(['data' => $data], 200);
     }
 }

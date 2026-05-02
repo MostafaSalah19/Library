@@ -50,33 +50,6 @@ class BookController extends Controller
     public function store(CreateBookRequest $request)
     {
 
-        // $validated = $request->validate([
-        //     ' title' =>'required|string|max:255',
-        //     'isbn' => 'required|string|max:20|unique:books,isbn',
-        //     'author_id' =>'exists:authors,id',
-        //     'category_id' =>'nullable|exists:categories,id',
-        // ]);
-
-        // $dataToInsert['author_id']=$request->author_id;
-        // $dataToInsert['category_id']=$request->category_id;
-        // $dataToInsert['title']=$request->title;
-        // $dataToInsert['isbn']=$request->isbn;
-        // $dataToInsert['published_year']=$request->published_year;
-        // $dataToInsert['pages']=$request->pages;
-        // Book::create($dataToInsert);
-
-        // $dataToInsert =
-        //     [
-        //         'author_id'=>$request->author_id,
-        //         'category_id'=>$request->category_id,
-        //         'title'=>$request->title,
-        //         'isbn'=>$request->isbn,
-        //         'published_year'=>$request->published_year,
-        //         'pages'=>$request->pages
-
-        //     ];
-        // Book::create($dataToInsert);
-
         $book = new Book();
         $book->author_id = $request->author_id;
         $book->category_id = $request->category_id;

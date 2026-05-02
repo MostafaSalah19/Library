@@ -86,5 +86,5 @@ Route::delete('/logout', [SessionsController::class, 'destroy'])->name('logout')
 
 Route::get('/hi', function () {
     Gate::authorize('view-admin');
-    return 'Hello In Amidn page';
+    return 'Hello In Admin page';
 });
